@@ -1,0 +1,51 @@
+
+html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+#map {
+        height: 400px;
+        width:700px;
+        color: white;
+            margin-left: auto;
+    margin-right: auto;
+      }
+.container{
+        min-height: 500px;
+      }
+#slider{
+    margin-left: auto;
+    margin-right: auto;
+    width:700px;
+}
+
+.stations, .stations svg {
+  position: absolute;
+}
+
+.stations svg {
+  width: 500px;
+  height: 500px;
+  padding-right: 100px;
+  font: 10px sans-serif;
+}
+
+.stations circle {
+  fill: brown;
+  stroke: brown;
+  stroke-width: 1.5px;
+}
+circle {
+  fill: steelblue;
+  fill-opacity: .6;
+  stroke: #fff;
+}
+#states path {
+  fill: #ccc;
+  stroke: #fff;
+}
+#grap{
+    width:400px;
+    height:auto;
+}

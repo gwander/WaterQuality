@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Water Quaity</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--JQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>    
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" />
+    <!--D3.js-->
+    <script src="//d3js.org/d3.v3.min.js"></script>
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/bootstrap.min.js"></script>
+    
+    <!--My-->
+    <script src="js/slider_map.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <!--Google Maps--> 
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBujKiqJMRK30J4iW_FqP6NqzToBSXXBaY&callback=initMap">
+    </script>
+  </head>
+  
+<body>
+    <h1 class="text-center">Water!</h1>
+      
+    <div class="col-md-2">
+        left
+    </div>
+    <div class="container col-md-8 text-center">
+        <div id="map" ></div>
+        <div id="slider" style="width: 500px;"></div>
+        <p class="text-center">
+            <label for="year">Year :</label>    
+            <input type="text" id="year" style="border:0; color:#f6931f; font-weight:bold; " />
+        </p>
+    </div>
+    <div class="col-md-2">
+        right
+    </div>    
+  </body>
+</html>
