@@ -4,6 +4,11 @@ function initMap() {
         zoom: 12,
         center: {lat: 41.95, lng: -93.63},
     });
+    google.maps.event.addDomListener(window, "resize", function() {
+   var center = map.getCenter();
+   google.maps.event.trigger(map, "resize");
+   map.setCenter(center); 
+});
 
     map.data.loadGeoJson('google.json');
 
