@@ -4,11 +4,7 @@ function initMap() {
         zoom: 12,
         center: {lat: 41.95, lng: -93.63},
     });
-    google.maps.event.addDomListener(window, "resize", function() {
-   var center = map.getCenter();
-   google.maps.event.trigger(map, "resize");
-   map.setCenter(center); 
-});
+    
 
     map.data.loadGeoJson('google.json');
 
@@ -66,8 +62,8 @@ d3.json("stations.json", function(error, data) {
 $(document).ready(function() {
     $("#slider").slider({
         value:2000,
-	    min: 1971,
-	    max: 2006,
+	    min: 1991,
+	    max: 2012,
 	    step: 1,
 	    slide: function( event, ui ) {
 		    $("#year").val(ui.value);

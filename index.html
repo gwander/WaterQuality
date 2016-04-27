@@ -25,39 +25,68 @@
     </script>
 </head>
 <body>
-    <div id="container">
+    <div class="container">
+    <div class="page-header" style="min-height: 120px;max-height: 120px" >
         <h1 class= "text-center">Water!</h1>
         <p class="text-center">description</p>
-        <div id="left" class="col-md-2 col-lg-2">left</div>
-        <div id="map" class="col-md-10 col-lg-10"></div>
+    </div>
+        <div id="left" class="col-md-2 col-lg-2">
+            <div class="panel panel-info">
+            <div class="panel-heading">left</div>
+            <div class="panel-body">choice <br>
+            of<br>
+            layer<br> 
+            on<br>
+            the<br> 
+            map</div>
+            </div>
+        </div>
+        <div class=" col-md-10 col-lg-10">
+        <div class="panel panel-info">
+            <div class="panel-heading">Map</div>
+            <div id="map" class="panel-body"></div>
+        </div>
+        </div>
         <!--<div id="detail" class="col-md-4 col-lg-4"><img src="img/detail.png" style="width:100%"></img></div>-->
         <div class="col-md-2 col-lg-2 text-center">
-            <div id="sites-select" ><br>Sites select:
-                <br>☐WC330
-                <br>☐WC210
-                <br>☐WC220
-                <br>
-                <br>
+            <div id="sites-select" >
+                <div class="panel panel-info">
+                    <div class="panel-heading">Site Select</div>
+                    <div class="panel-body">☐WC330
+                        <br>☐WC210
+                        <br>☐WC220
+                    </div>
+                    <div class="panel-footer">
+                        <div id="play"class="col-sm-6 col-xs-6 col-md-6 col-lg-6" ><img src="img/play.png" style="text-align:left;width:100%"></img></div>
+                                <label for="year" style="text-aligh:right">Date :</label>    
+                                <input type="text" id="year" style="text-align:right;width:50%; border:0; color:#f6931f; font-weight:bold; " /></div>
+                </div>
             </div>
-            <div id="play" class="col-md-4"><img src="img/play.png" style="width:200%"></img></div>
             <!--<div id="date"></div>-->
-            <div class="col-md-8">       
-            <label for="year">Date :</label>    
-            <input type="text" id="year" style="border:0; color:#f6931f; font-weight:bold; " />
-            <br>
-            <input type="text" id="year" style="border:0; color:#f6931f; font-weight:bold; " />
-        </div>
-        </div>
-        <div class="col-md-6 col-lg-6">
-            <div id="chart"><img style="width:100%" src="img/chart.png"></img></div>
-            <div id="slider" style="width: 500px;"></div>
-            
+      
+
 
         </div>
-        <div  class="col-md-4 col-lg-4"><img src="img/detail.png" style="width:80%"></img></div>
+        <div class="col-md-6 col-lg-6">
+            <div class="panel panel-info">
+                <div class="panel-heading">Data_main</div>
+                    <div class="panel-body">
+            <div id="chart"><img style="width:100%" src="img/chart.png"></img></div>
+            <div id="slider" style="width: 100%;"></div>
+                    </div>
+            </div>
+            </div>
+
+        
+        <div  class="col-md-4 col-lg-4">
+                        <div class="panel panel-info">
+                <div class="panel-heading">Detail</div>
+                    <div class="panel-body"><img src="img/detail.png" style="width:80%"></img></div>
+                   </div></div>
  
- </body>
+</div>
         
         
     </div>
+</div>
 </body>
