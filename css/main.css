@@ -8,7 +8,7 @@ html, body {
       }
 #map {
 
-        height:300px;
+        height:200px;
         width:100%;
         color: white;
         margin-left: 0Px;
@@ -17,7 +17,10 @@ html, body {
       }
 .container{
         min-height: 500px;
-        background-color: lightsteelblue
+        background-color: lightblue;
+        background-image:url("../img/background.jpg");
+        background-size :100%;
+
       }
 #slider{
     margin-left: auto;
@@ -55,7 +58,9 @@ circle {
     height:auto;
 }
 .page-header{
-  background-color: lightblue;
+  /*background-image: url("../img/water.png");*/
+  background-position-y: 150px;
+  background-size: 100%;
   margin-top: 0px;
   padding: 0px;
 }

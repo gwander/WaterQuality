@@ -1,7 +1,7 @@
 var map;
 function initMap() {    
     map = new google.maps.Map(d3.select("#map").node(), {
-        zoom: 12,
+        zoom: 11,
         center: {lat: 41.95, lng: -93.63},
     });
     
@@ -75,7 +75,7 @@ $(document).ready(function() {
         .attr("id", "labels");
     var xy = d3.geo.equirectangular()
         .scale(1000);
-    var scalefactor=50./50. ;
+    var scalefactor=20./50. ;
     
     d3.csv("data.csv", function(csv) {
         marker
