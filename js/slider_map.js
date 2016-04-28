@@ -16,7 +16,7 @@ function initMap() {
         return /** @type {google.maps.Data.StyleOptions} */({
             fillColor: color,
             strokeColor: color,
-            strokeWeight: 2
+            strokeWeight: 1
         });
     });
 
@@ -29,7 +29,7 @@ function initMap() {
 
     map.data.addListener('mouseover', function(event) {
         map.data.revertStyle();
-        map.data.overrideStyle(event.feature, {strokeWeight: 4});
+        map.data.overrideStyle(event.feature, {strokeWeight: 2});
     });
     map.data.addListener('mouseout', function(event) {
         map.data.revertStyle();
