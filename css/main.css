@@ -17,7 +17,7 @@ html, body {
       }
 .container{
         min-height: 500px;
-        background-color: lightblue;
+        background-color: #D0EAFF;
         /*background-image:url("../img/background.jpg");*/
         background-size :100%;
 
@@ -25,7 +25,8 @@ html, body {
 #slider{
     margin-left: auto;
     margin-right: auto;
-    width:70%;
+    width:50%;
+    text-align: right;
 }
 
 .stations, .stations svg {
@@ -40,7 +41,7 @@ html, body {
 }
 
 .stations circle {
-  fill: #67a9cf;
+  fill: steelblue;
   stroke: white;
   stroke-width: 1.5px;
 }
@@ -49,14 +50,7 @@ circle {
   fill-opacity: .6;
   stroke: #fff;
 }
-#states path {
-  fill: #ccc;
-  stroke: #fff;
-}
-#grap{
-    width:400px;
-    height:auto;
-}
+
 .page-header{
   /*background-image: url("../img/water.png");*/
   background-position-y: 150px;
@@ -111,4 +105,9 @@ circle {
 }
 .panel-heading{
   height: 20px;padding:0;
+
+}
+
+.panel-body{
+  background-color: #ECECEC;
 }

@@ -77,7 +77,14 @@ $(document).ready(function() {
         .scale(1000);
     var scalefactor=20./50. ;
     
+    
     d3.csv("data.csv", function(csv) {
+                marker.append("text")
+            .attr("x", padding + 7)
+            .attr("y", padding)
+            .attr("dy", ".31em")
+            .text(function(d) { return d.key; });
+            
         marker
         .data(csv)
         .append("circle")
@@ -112,11 +119,7 @@ $(document).ready(function() {
             }
         });
         
-        marker.append("text")
-            .attr("x", padding + 7)
-            .attr("y", padding)
-            .attr("dy", ".31em")
-            .text(function(d) { return d.key; });
+
 
       function transform(d) {
           d = new google.maps.LatLng(d.value[1], d.value[0]);
