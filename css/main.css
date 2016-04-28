@@ -42,9 +42,10 @@ html, body {
 }
 
 .stations circle {
-  fill: steelblue;
+  fill: blue;
   stroke: white;
   stroke-width: 1.5px;
+  z-index: -1;
 }
 circle {
   fill: steelblue;
