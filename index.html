@@ -23,8 +23,10 @@
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBujKiqJMRK30J4iW_FqP6NqzToBSXXBaY&callback=initMap">
     </script>
+    <link rel="stylesheet" href="css/linechart.css">
 </head>
 <body>
+
     <div class="container">
     <div class="page-header" style="min-height: 120px;max-height: 120px" >
         <h1 class= "text-center">Water!</h1>
@@ -35,18 +37,7 @@
         <div class="panel panel-primary" ">
             <div class="panel-heading" style="height: 20px;padding:0">Map</div>
             <div class="panel-body">
-                <div class="col-md-2 col-sm-2 col-lg-2">
-                    <table class="table table-hover">
-                        <thead><tr><th>Land Use</th></tr></thead>
-                        <tbody>
-                            <tr><td>Land1</td></tr>
-                            <tr><td>Land2</td></tr>
-                            <tr><td>Land3</td></tr>
-                            <tr><td>Reset</td></tr>
-                        </tbody>
-                    </table>
-                    </div>
-                <div  class="col-md-10 col-sm-10 col-lg-10" >
+                <div  class="col-md-12 col-sm-12 col-lg-12" >
                     <div><input type=button onclick="resetMap();" value="reset the map" class="pull-right" style="        position: absolute;
         top: 10px;
         left: 75%;
@@ -61,9 +52,7 @@
                     </div>
             </div>
         </div>
-    </div>
-        <!--<div id="detail" class="col-md-4 col-lg-4"><img src="img/detail.png" style="width:100%"></img></div>-->
-        
+    </div>        
         <div  class="col-md-4 col-lg-4">
             <div class="panel panel-primary">
                 <div class="panel-heading" style="height: 20px;padding:0">
@@ -78,10 +67,9 @@
                 </div>
                 <div class="panel-body" style="min-height: 380px; max-height: 380px;">
                     <div class="tab-content">
-                        <div class="tab-pane active" id="tab1">
-                            detail information:<br>
-                            from Jan 1997 to Dec 1997
-                        <img src="img/detail.png" style="width:100%"></div>
+                        <div class="tab-pane active" style="min-height:350px;max:height:350px" id="tab1">
+                            <div id="linechart" style="min-height:350px;max:height:350px"></div>
+                        </div>
                         <div class="tab-pane" id="tab2">tab2</div>
                     </div>
                 </div>
@@ -90,11 +78,11 @@
     
             <div class="col-md-12 col-lg-12">
             <div class="panel panel-primary">
-                <div class="panel-heading">Data_main</div>
-                    <div class="panel-body" style="min-height: 140px; max-height: 140px;">
-            <div id="chart"><img style="width:100%;height:100px" src="img/chart.png"></img></div>
-            <div id="slider" style="width: 100%;"></div>
-                    </div>
+                    <div class="panel-body" style="min-height: 250px; max-height: 250px;">
+                        <div class="col-md-10 col-lg-10"><div id="linechartmain" style="width: 100%"></div>
+                        <div id="slider" style="width: 100%"></div></div>
+                        <div class="col-md-2 col-lg-2" id="legend"></div>            
+                    
             </div>
             </div>
             </div>
@@ -103,5 +91,8 @@
     </div>
 
 </div>
+<script src="http://d3js.org/d3.v3.js"></script>
+<script src="js/linechart2.js"></script>
+
 
 </body>

@@ -56,9 +56,9 @@ $(document).ready(function() {
         .attr("cy", padding)
         .attr("title",  function(d) { return d["country"]+": "+Math.round(d["1990"]); })
         .on("mouseover", function(d) {
-            d3.select(this).style("fill","#FC0");})
+            d3.select(this).style("fill","#48A36D");})
         .on("mouseout", function(d) {
-            d3.select(this).style("fill","steelblue");});
+            d3.select(this).style("fill","#48A36D");});
         
             
 //   labels.selectAll("labels")
@@ -193,9 +193,9 @@ $(document).ready(function() {
         .attr("cy", padding)
         .attr("title",  function(d) { return d["country"]+": "+Math.round(d["1990"]); })
         .on("mouseover", function(d) {
-            d3.select(this).style("fill","#FC0");})
+            d3.select(this).style("fill","#48A36D");})
         .on("mouseout", function(d) {
-            d3.select(this).style("fill","steelblue");});
+            d3.select(this).style("fill","#48A36D");});
         
             
 //   labels.selectAll("labels")
