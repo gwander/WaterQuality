@@ -2,14 +2,17 @@ var parseDate = d3.time.format("%Y%m%d%H%M").parse;
 var bisectDate = d3.bisector(function (d) { return d.date; }).left;
 
 var xScale = d3.time.scale()
-  .range([0, 295]),
+  .range([0, 295]);
+var xScale_copy = d3.time.scale()
+  .range([0, 295]);
 
-  xScale2 = d3.time.scale()
+var xScale2 = d3.time.scale()
     .range([0, 850]); // Duplicate xScale for brushing ref later
 
 var yScale = d3.scale.linear().range([320, 0]);
 
-var yScale2 = d3.scale.linear().range([98, 94]);
+var yScale2 = d3.scale.linear().range([150, 144]);
+
 // 40 Custom DDV colors 
 var color = d3.scale.ordinal().range(["#48A36D", "#E37756", "#E2AA59"]);
 
@@ -62,23 +65,24 @@ var svg2 = d3.select("#linechartmain").append("svg")
   .attr("width", 850)
   .attr("height", 170) //height + margin.top + margin.bottom
   .append("g")
+  .attr("class", "chart2")
 
 var context = svg2.append("g") // Brushing context box container
-  .attr("transform", "translate(" + 0 + "," + 0 + ")")
   .attr("class", "context");//小框框下面的字
 
 //append clip path for lines plotted, hiding those part out of bounds
 svg.append("defs")
   .append("clipPath")
-  .attr("id", "clip")
+ .attr("id", "clip")
   .append("rect")
   .attr("width", 500)
   .attr("height", 320); //控制不样line出格
 
 svg2.append("defs")
   .append("clipPath")
+  .attr("id", "clip2")
   .append("rect")
-  .attr("width", 580)
+  .attr("width", 850)
   .attr("height", 150); //控制不样line出格
 
 //end slider part----------------------------------------------------------------------------------- 
@@ -93,7 +97,6 @@ d3.csv("data4.csv", function (error, data) {
   });
 
   var categories = color.domain().map(function (name) { // Nest the data into an array of objects with new keys
-
     return {
       name: name, // "name": the csv headers except date
       values: data.map(function (d) { // "values": which has an array of the dates and ratings
@@ -107,10 +110,9 @@ d3.csv("data4.csv", function (error, data) {
   });
 
   xScale.domain(d3.extent(data, function (d) { return d.date; })); // extent = highest and lowest points, domain is data, range is bouding box
-
-  yScale.domain([0, 100]);
-
-  xScale2.domain(xScale.domain()); // Setting a duplicate xdomain for brushing reference later
+  
+  yScale.domain([0, 150]);
+  xScale2.domain(d3.extent(data, function (d) { return d.date; })); // Setting a duplicate xdomain for brushing reference later
 
   //for slider part-----------------------------------------------------------------------------------
 
@@ -126,13 +128,14 @@ d3.csv("data4.csv", function (error, data) {
   var contextArea = d3.svg.area() // Set attributes for area chart in brushing context graph
     .interpolate("monotone")
     .x(function (d) { return xScale2(d.date); }) // x is scaled to xScale2
-    .y0(150) // Bottom line begins at height2 (area chart not inverted) 
-    .y1(0); // Top line of area, 0 (area chart not inverted)
+    .y0(0) // Bottom line begins at height2 (area chart not inverted) 
+    .y1(150); // Top line of area, 0 (area chart not inverted)
 
   //plot the rect as the bar at the bottom
   context.append("path")
     .attr("class", "area")
     .attr("height", 150)
+    .attr("width", 850)
     .attr("d", contextArea(categories[0].values)) // pass first categories data .values to area path generator 
     .attr("fill", "#F1F1F2");//整个小框框
 
@@ -155,7 +158,7 @@ d3.csv("data4.csv", function (error, data) {
 
   svg2.append("g")
     .attr("class", "x axis")
-    .attr("transform", "translate(0,320)")
+    .attr("transform", "translate(0,150)")
     .call(xAxis2);//大框框下面的字
 
   svg2.append("g")
@@ -163,8 +166,8 @@ d3.csv("data4.csv", function (error, data) {
     .call(yAxis2)//大框的y
     .append("text")
     .attr("transform", "rotate(-90)")
-    .attr("y", 6)
-    .attr("x", -10)
+    .attr("y", 0)
+    .attr("x", -20)
     .attr("dy", ".71em")
     .style("text-anchor", "end")
     .text("Nitrate Level: mg/L");//大框上面的说明
@@ -174,8 +177,8 @@ d3.csv("data4.csv", function (error, data) {
     .call(yAxis)//大框的y
     .append("text")
     .attr("transform", "rotate(-90)")
-    .attr("y", 6)
-    .attr("x", -10)
+    .attr("y", 0)
+    .attr("x", -20)
     .attr("dy", ".71em")
     .style("text-anchor", "end")
     .text("Nitrate Level: mg/L");//大框上面的说明
@@ -186,7 +189,7 @@ d3.csv("data4.csv", function (error, data) {
     .append("g")
     .attr("transform", "translate(-30,0)");
 
-  var issue = svg3.selectAll(".issue")
+  var issue =  svg3.selectAll(".issue")
     .data(categories) // Select nested data and append to new svg group elements
     .enter().append("g")
     .attr("class", "issue");//边上的小按钮   
@@ -194,12 +197,13 @@ d3.csv("data4.csv", function (error, data) {
   var chart = svg.selectAll(".chart")
     .data(categories) // Select nested data and append to new svg group elements
     .enter().append("g")
-    .attr("class", "chart");//边上的小按钮
+    .attr("class", "chart");
 
-  var chart2 = svg2.selectAll(".chart")
+  var chart2 = svg2.selectAll(".chart2")
     .data(categories) // Select nested data and append to new svg group elements
     .enter().append("g")
-    .attr("class", "chart");//边上的小按钮      
+    .attr("width",850)
+    .attr("class", "chart2");    
 
   chart.append("path")
     .attr("class", "line")
@@ -212,40 +216,19 @@ d3.csv("data4.csv", function (error, data) {
     })
     .attr("clip-path", "url(#clip)")//use clip path to make irrelevant part invisible
     .style("stroke", function (d) { return color(d.name); });
+    
   chart2.append("path")
     .attr("class", "line")
     .style("pointer-events", "none") // Stop line interferring with cursor
     .attr("id", function (d) {
-      return "line-" + d.name.replace(" ", "").replace("/", ""); // Give line id of line-(insert issue name, with any spaces replaced with no spaces)
-    })
-    .attr("d", function (d) {
-      return d.visible ? line(d.values) : null; // If array key "visible" = true then draw line, if not then don't 
-    })
-    .attr("clip-path", "url(#clip)")//use clip path to make irrelevant part invisible
-    .style("stroke", function (d) { return color(d.name); });
-
-  chart2.append("path")
-    .attr("class", "line")
-    .style("pointer-events", "none") // Stop line interferring with cursor
-    .attr("id", function (d) {
-      return "line-" + d.name.replace(" ", "").replace("/", ""); // Give line id of line-(insert issue name, with any spaces replaced with no spaces)
-    })
-    .attr("d", function (d) {
-      return d.visible ? line(d.values) : null; // If array key "visible" = true then draw line, if not then don't 
-    })
-    .attr("clip-path", "url(#clip)")//use clip path to make irrelevant part invisible
-    .style("stroke", function (d) { return color(d.name); });
-  chart2.append("path")
-    .attr("class", "line")
-    .style("pointer-events", "none") // Stop line interferring with cursor
-    .attr("id", function (d) {
-      return "line-" + d.name.replace(" ", "").replace("/", ""); // Give line id of line-(insert issue name, with any spaces replaced with no spaces)
+      return "line2-" + d.name.replace(" ", "").replace("/", ""); // Give line id of line-(insert issue name, with any spaces replaced with no spaces)
     })
     .attr("d", function (d) {
       return d.visible ? line2(d.values) : null; // If array key "visible" = true then draw line, if not then don't 
     })
-    .attr("clip-path", "url(#clip)")//use clip path to make irrelevant part invisible
+    .attr("clip-path", "url(#clip2)")//use clip path to make irrelevant part invisible
     .style("stroke", function (d) { return color(d.name); });
+
   // draw legend
   var legendSpace = 100 / categories.length; // 450/number of issues (ex. 40)    
 
@@ -274,7 +257,6 @@ d3.csv("data4.csv", function (error, data) {
         .call(yAxis);
 
       svg2.select(".y.axis")
-        .transition()
         .call(yAxis2);
 
       chart.select("path")
@@ -411,7 +393,7 @@ d3.csv("data4.csv", function (error, data) {
   //for brusher of the slider bar at the bottom
   function brushed() {
 
-    xScale.domain(brush.empty() ? xScale2.domain() : brush.extent()); // If brush is empty then reset the Xscale domain to default, if not then make it the brush extent 
+    xScale.domain(brush.empty() ? xScale_copy.domain() : brush.extent()); // If brush is empty then reset the Xscale domain to default, if not then make it the brush extent 
 
     svg.select(".x.axis") // replot xAxis with transition when brush used
       .transition()
@@ -429,12 +411,6 @@ d3.csv("data4.csv", function (error, data) {
       .attr("d", function (d) {
         return d.visible ? line(d.values) : null; // If d.visible is true then draw line for this d selection
       });
-    chart2.select("path") // Redraw lines based on brush xAxis scale and domain
-      .transition()
-      .attr("d", function (d) {
-        return d.visible ? line2(d.values) : null; // If d.visible is true then draw line for this d selection
-      });
-
   };
 
 }); // End Data callback function

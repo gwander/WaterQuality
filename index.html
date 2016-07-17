@@ -11,7 +11,7 @@
     <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" />
     <!--D3.js-->
-    <script src="//d3js.org/d3.v3.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
     <!--Bootstrap-->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/bootstrap.min.js"></script>
@@ -35,7 +35,7 @@
 
     <div class=" col-md-8 col-lg-8">
         <div class="panel panel-primary" ">
-            <div class="panel-heading" style="height: 20px;padding:0">Map</div>
+            <!--<div class="panel-heading" style="height: 20px;padding:0">Map</div>-->
             <div class="panel-body">
                 <div  class="col-md-12 col-sm-12 col-lg-12" >
                     <div><input type=button onclick="resetMap();" value="reset the map" class="pull-right" style="        position: absolute;
@@ -55,16 +55,16 @@
     </div>        
         <div  class="col-md-4 col-lg-4">
             <div class="panel panel-primary">
-                <div class="panel-heading" style="height: 20px;padding:0">
+                <!--<div class="panel-heading" style="height: 20px;padding:0">
                     <h3 class="panel-title">Panel</h3>
                     <span class="pull-right">
-                        <!-- Tabs -->
+                        
                         <ul class="nav panel-tabs">
                             <li class="active"><a href="#tab1" data-toggle="tab">Detail</a></li>
                             <li><a href="#tab2" data-toggle="tab">Tab 2</a></li>
                         </ul>
                     </span>
-                </div>
+                </div>-->
                 <div class="panel-body" style="min-height: 380px; max-height: 380px;">
                     <div class="tab-content">
                         <div class="tab-pane active" style="min-height:350px;max:height:350px" id="tab1">
@@ -77,11 +77,14 @@
         </div>
     
             <div class="col-md-12 col-lg-12">
-            <div class="panel panel-primary">
+            <div class="panel panel-primary" style="margin-bottom:30px">
                     <div class="panel-body" style="min-height: 250px; max-height: 250px;">
+                                                <div class="col-md-2 col-lg-2" id="legend">
+                                                    </div> 
+
+
                         <div class="col-md-10 col-lg-10"><div id="linechartmain" style="width: 100%"></div>
                         <div id="slider" style="width: 100%"></div></div>
-                        <div class="col-md-2 col-lg-2" id="legend"></div>            
                     
             </div>
             </div>
@@ -92,7 +95,7 @@
 
 </div>
 <script src="http://d3js.org/d3.v3.js"></script>
-<script src="js/linechart2.js"></script>
+<script src="js/linechart.js"></script>
 
 
 </body>
