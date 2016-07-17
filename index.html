@@ -5,54 +5,30 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="shortcut icon" href="img/drop.png">
-    <!--JQuery-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>    
-    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" />
-    <!--D3.js-->
-    <script src="http://d3js.org/d3.v3.min.js"></script>
-    <!--Bootstrap-->
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <script src="js/bootstrap.min.js"></script>
-    
-    <!--My-->
-    <script src="js/slider_map.js"></script>
     <link rel="stylesheet" href="css/main.css">
-    <!--Google Maps--> 
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBujKiqJMRK30J4iW_FqP6NqzToBSXXBaY&callback=initMap">
-    </script>
     <link rel="stylesheet" href="css/linechart.css">
+    <link rel="stylesheet" href="css/d3.slider.css" />
 </head>
+
 <body>
-
     <div class="container">
-    <div class="page-header" style="min-height: 120px;max-height: 120px" >
-        <h1 class= "text-center">Water!</h1>
-        <p class="text-center">description</p>
-    </div>
-
-    <div class=" col-md-8 col-lg-8">
-        <div class="panel panel-primary" ">
-            <!--<div class="panel-heading" style="height: 20px;padding:0">Map</div>-->
-            <div class="panel-body">
-                <div  class="col-md-12 col-sm-12 col-lg-12" >
-                    <div><input type=button onclick="resetMap();" value="reset the map" class="pull-right" style="        position: absolute;
-        top: 10px;
-        left: 75%;
-        z-index: 5;
-        background-color: #fff;
-        border: 1px solid #999;
-        text-align: center;
-        font-family: 'Roboto','sans-serif';
-        line-height: 30px;
-"></input></div>
-                    <div id="map"></div>
-                    </div>
-            </div>
+        <div class="page-header" style="min-height: 120px;max-height: 120px" >
+            <h1 class= "text-center">Water!</h1>
+            <p class="text-center">description</p>
         </div>
-    </div>        
+   	    <div class=" col-md-8 col-lg-8">
+            <div class="panel panel-primary" ">
+                <!--<div class="panel-heading" style="height: 20px;padding:0">Map</div>-->
+                <div class="panel-body">
+                    <div  class="col-md-12 col-sm-12 col-lg-12" >
+                        <div><input type=button onclick="resetMap();" value="reset the map" class="pull-right resetButton" </input></div>
+                        <div id="map"></div>
+                    </div>
+                </div>
+            </div>
+        </div>        
         <div  class="col-md-4 col-lg-4">
             <div class="panel panel-primary">
                 <!--<div class="panel-heading" style="height: 20px;padding:0">
@@ -75,27 +51,41 @@
                 </div>
             </div>
         </div>
-    
-            <div class="col-md-12 col-lg-12">
+        <div class="col-md-12 col-lg-12">
             <div class="panel panel-primary" style="margin-bottom:30px">
-                    <div class="panel-body" style="min-height: 250px; max-height: 250px;">
-                                                <div class="col-md-2 col-lg-2" id="legend">
-                                                    </div> 
-
-
-                        <div class="col-md-10 col-lg-10"><div id="linechartmain" style="width: 100%"></div>
-                        <div id="slider" style="width: 100%"></div></div>
-                    
+                <div class="panel-body" style="min-height: 250px; max-height: 250px;">
+                    <div class="col-md-2 col-lg-2">
+                        <div id="legend"></div>
+                        <div id="play"></div>
+                        <div id="date">
+                            <p>12 months ending on:</p>
+                            <p id="month"></p>
+                        </div>
+                    </div> 
+                        <div class="col-md-10 col-lg-10">
+                            <div id="linechartmain" style="width: 100%"></div>
+                            <div id="slider">
+                                <div id="slider-div"></div>
+                                <div id="slider-probe">
+                                <p></p><div></div>
+                            </div>
+                        </div>                    
+                    </div>
+                </div>
             </div>
-            </div>
-            </div>
-        
-
+        </div>
     </div>
-
-</div>
-<script src="http://d3js.org/d3.v3.js"></script>
-<script src="js/linechart.js"></script>
-
-
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>    
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/d3.v3.min.js"></script>
+    <script src="js/topojson.v1.min.js"></script>
+    <script src="js/d3.slider.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBujKiqJMRK30J4iW_FqP6NqzToBSXXBaY&callback=initMap"></script>
+    <script src="js/slider_map.js"></script>
+    <script src="js/linechart.js"></script>
+    <!--<script src="js/main.js"></script>-->
 </body>
+</html>

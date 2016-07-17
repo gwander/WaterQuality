@@ -1,4 +1,7 @@
+
+
 var map;
+
 function resetMap() {
     initMap();
 }
@@ -81,7 +84,6 @@ d3.json("stations.json", function (error, data) {
                 var xy = d3.geo.equirectangular()
                     .scale(850);
                 var scalefactor = 50. / 50.;// write a linear function 
-                    var color = d3.scale.ordinal().range(["#48A36D", "#E37756", "#E2AA59"]);
 
                 d3.csv("data.csv", function (csv) {
 
@@ -130,8 +132,6 @@ d3.json("stations.json", function (error, data) {
                 }
             });
 
-
-
             function transform(d) {
                 d = new google.maps.LatLng(d.value[1], d.value[0]);
                 d = projection.fromLatLngToDivPixel(d);
@@ -143,6 +143,5 @@ d3.json("stations.json", function (error, data) {
     };
     overlay.setMap(map);
 });
-
-
 }
+
