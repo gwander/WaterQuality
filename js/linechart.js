@@ -2,16 +2,16 @@ var parseDate = d3.time.format("%Y%m%d%H%M").parse;
 var bisectDate = d3.bisector(function (d) { return d.date; }).left;
 
 var xScale = d3.time.scale()
-  .range([0, 295]);
+  .range([0, 550]);
 var xScale_copy = d3.time.scale()
-  .range([0, 295]);
+  .range([0, 550]);
 
 var xScale2 = d3.time.scale()
-    .range([0, 850]); // Duplicate xScale for brushing ref later
+    .range([0, 985]); // Duplicate xScale for brushing ref later
 
-var yScale = d3.scale.linear().range([320, 0]);
+var yScale = d3.scale.linear().range([551, 0]);
 
-var yScale2 = d3.scale.linear().range([150, 144]);
+var yScale2 = d3.scale.linear().range([130, 124]);
 
 // 40 Custom DDV colors 
 var color = d3.scale.ordinal().range(["#48A36D", "#E37756", "#E2AA59"]);
@@ -45,16 +45,16 @@ var line2 = d3.svg.line()
 var maxY; // Defined later to update yAxis
 
 var svg = d3.select("#linechart").append("svg")
-  .attr("width", 295)
-  .attr("height", 320) //height + margin.top + margin.bottom
+  .attr("width", 550)
+  .attr("height", 551) //height + margin.top + margin.bottom
   .append("g")
   .attr("class", "chart")
   .attr("transform", "translate(" + 20 + "," + -20 + ")")
 
 // Create invisible rect for mouse tracking
 svg.append("rect")
-  .attr("width", 295)
-  .attr("height", 320)
+  .attr("width", 550)
+  .attr("height", 551)
   .attr("x", 0)
   .attr("y", 0)
   .attr("id", "mouse-tracker")
@@ -62,8 +62,8 @@ svg.append("rect")
 
 //for slider part-----------------------------------------------------------------------------------
 var svg2 = d3.select("#linechartmain").append("svg")
-  .attr("width", 850)
-  .attr("height", 170) //height + margin.top + margin.bottom
+  .attr("width", 985)
+  .attr("height", 150) //height + margin.top + margin.bottom
   .append("g")
   .attr("class", "chart2")
 
@@ -75,15 +75,15 @@ svg.append("defs")
   .append("clipPath")
  .attr("id", "clip")
   .append("rect")
-  .attr("width", 500)
-  .attr("height", 320); //控制不样line出格
+  .attr("width", 550)
+  .attr("height", 551); //控制不样line出格
 
 svg2.append("defs")
   .append("clipPath")
   .attr("id", "clip2")
   .append("rect")
-  .attr("width", 850)
-  .attr("height", 150); //控制不样line出格
+  .attr("width", 985)
+  .attr("height", 130); //控制不样line出格
 
 //end slider part----------------------------------------------------------------------------------- 
 
@@ -111,7 +111,7 @@ d3.csv("data4.csv", function (error, data) {
 
   xScale.domain(d3.extent(data, function (d) { return d.date; })); // extent = highest and lowest points, domain is data, range is bouding box
   
-  yScale.domain([0, 150]);
+  yScale.domain([0, 130]);
   xScale2.domain(d3.extent(data, function (d) { return d.date; })); // Setting a duplicate xdomain for brushing reference later
 
   //for slider part-----------------------------------------------------------------------------------
@@ -122,20 +122,20 @@ d3.csv("data4.csv", function (error, data) {
 
   context.append("g") // Create brushing xAxis
     .attr("class", "x axis1")
-    .attr("transform", "translate(0,150)")//小框下面的字
+    .attr("transform", "translate(0,130)")//小框下面的字
     .call(xAxis2);
 
   var contextArea = d3.svg.area() // Set attributes for area chart in brushing context graph
     .interpolate("monotone")
     .x(function (d) { return xScale2(d.date); }) // x is scaled to xScale2
     .y0(0) // Bottom line begins at height2 (area chart not inverted) 
-    .y1(150); // Top line of area, 0 (area chart not inverted)
+    .y1(130); // Top line of area, 0 (area chart not inverted)
 
   //plot the rect as the bar at the bottom
   context.append("path")
     .attr("class", "area")
-    .attr("height", 150)
-    .attr("width", 850)
+    .attr("height", 130)
+    .attr("width", 985)
     .attr("d", contextArea(categories[0].values)) // pass first categories data .values to area path generator 
     .attr("fill", "#F1F1F2");//整个小框框
 
@@ -144,7 +144,7 @@ d3.csv("data4.csv", function (error, data) {
     .attr("class", "x brush")
     .call(brush)
     .selectAll("rect")
-    .attr("height", 150) // Make brush rects same height 
+    .attr("height", 130) // Make brush rects same height 
     .attr("fill", "#E6E7E8");  //小框框中的选择
 
 
@@ -153,12 +153,12 @@ d3.csv("data4.csv", function (error, data) {
   // draw line graph
   svg.append("g")
     .attr("class", "x axis")
-    .attr("transform", "translate(0,320)")
+    .attr("transform", "translate(0,551)")
     .call(xAxis);//大框框下面的字
 
   svg2.append("g")
     .attr("class", "x axis")
-    .attr("transform", "translate(0,150)")
+    .attr("transform", "translate(0,130)")
     .call(xAxis2);//大框框下面的字
 
   svg2.append("g")
@@ -184,8 +184,8 @@ d3.csv("data4.csv", function (error, data) {
     .text("Nitrate Level: mg/L");//大框上面的说明
 
   var svg3 = d3.select("#legend").append("svg")
-    .attr("width", 500)
-    .attr("height", 150) //height + margin.top + margin.bottom
+    .attr("width", 550)
+    .attr("height", 130) //height + margin.top + margin.bottom
     .append("g")
     .attr("transform", "translate(-30,0)");
 
@@ -202,7 +202,7 @@ d3.csv("data4.csv", function (error, data) {
   var chart2 = svg2.selectAll(".chart2")
     .data(categories) // Select nested data and append to new svg group elements
     .enter().append("g")
-    .attr("width",850)
+    .attr("width",985)
     .attr("class", "chart2");    
 
   chart.append("path")

@@ -3,12 +3,10 @@ html, body {
         height: 100%;
         margin: 0;
         padding: 0;
-        
-        background-color: lightgrey
       }
 #map {
 
-        height:350px;
+        height:500px;
         width:100%;
         color: white;
         margin-left: 0Px;
@@ -16,13 +14,20 @@ html, body {
         margin-right: auto;
         
       }
-.container{
-        min-height: 500px;
-        background-color: #D0EAFF;
-        /*background-image:url("../img/background.jpg");*/
-        background-size :100%;
 
+.navbar-brand{
+font-size:30px;
+line-height:30px;
+padding:0px 0px;
+margin-right:50px;
       }
+.container{
+  width:100%;
+  margin-top:140px;
+      }
+hr{border-color:white;
+margin-bottom:5px;
+margin-top:5px}
 #slider{
     margin-left: auto;
     margin-right: auto;
@@ -48,14 +53,6 @@ html, body {
   fill-opacity: .6;
 }*/
 
-
-.page-header{
-  /*background-image: url("../img/water.png");*/
-  background-position-y: 150px;
-  background-size: 100%;
-  margin-top: 0px;
-  padding: 0px;
-}
 /*Panel tabs*/
 .panel-tabs {
     position: relative;
@@ -107,7 +104,7 @@ html, body {
 }
 
 .panel-body{
-  background-color: #ECECEC;
+  background-color: #EEEEEE;
 }
 
 html, body{
@@ -184,7 +181,7 @@ circle.loss{
 #play{
   width: 53px;
   height: 53px;
-  background-image: url(../images/play.png);
+  background-image: url(images/play.png);
   border-radius: 5px;
   margin-left:0px;
   cursor: pointer;
@@ -195,7 +192,7 @@ circle.loss{
 }
 
 #play.pause{
-  background-image: url(../images/pause.png);
+  background-image: url(images/pause.png);
 }
 #slider-container{
   position: relative;
@@ -271,16 +268,12 @@ svg text{
 }
 
 h1, h2, #intro{
-  text-align: center;
+  text-align: left;
   font-weight: normal;
 }
-h1{
-  font-size: 30px;
-  margin: 20px;
-  color: #1a1a1a;
-}
+
 h2{
-  font-size: 18px;
+  font-size: 25px;
   color: #999;
   margin: 15px;
 }

@@ -8,8 +8,8 @@ function resetMap() {
 
 function initMap() {
     map = new google.maps.Map(d3.select("#map").node(), {
-        zoom: 12,
-        center: { lat: 41.95, lng: -93.63 },
+        zoom: 13,
+        center: { lat: 41.955, lng: -93.635 },
         mapTypeId: google.maps.MapTypeId.TERRAIN,
     });
 

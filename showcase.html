@@ -22,9 +22,11 @@
             </h1>
         </div>
         <ul class="nav navbar-nav">
-            <li class="active"><a href="index.html"><h2>Home</h2></a></li>
-            <li><a href="showcase.html"><h2>Show Case</h2></a></li>
+            <li ><a href="index.html"><h2>Home</h2></a></li>
+            <li class="active"><a href="showcase.html"><h2>Show Case</h2></a></li>
         </ul>
+        <!--<p>The main purpose of this web application is to show the change of water quality in Walnut Creek Watershed-->
+        <!--for last 30 years and the data is from Iowa Nutrient Center. </p>-->
         <ul class="nav navbar-nav navbar-right" style="font-size:20px;line-height:25px">
             <li><p style="text-align: right">
                 Created By: Yuting Guo
@@ -34,23 +36,54 @@
             <li style="margin-left:30px;margin-right:15px"><img src="images/isu.png"></img></li>
         </ul>
     </div>
-    <div class="panel panel-default">
-        <h1>Introduction</h1>
+
+</div>
+<div class="col-md-8 col-lg-8">
+    <div class="panel panel-default ">
+        <div class="panel-body">
+            <div><input type=button onclick="resetMap();" value="reset the map"
+                        class="pull-right resetButton"> </input></div>
+            <div id="map"></div>
+        </div>
     </div>
-    <div>
-        <h1>The Idea</h1>
-    </div>
-    <div>
-        <h1>The Problem</h1>
-    </div>
-    <div>
-        <h1>Users</h1>
-    </div>
-    <div>
-        <h1>Process</h1>
+    <div class="panel panel-default ">
+        <div class="panel-body">
+            <div class="col-md-2 col-lg-2">
+                <div>Description</div>
+                <hr>
+                <div id="legend"></div>
+                <div id="play"></div>
+                <div id="date">
+                    <p>on:</p>
+                    <p id="month"></p>
+                </div>
+            </div>
+            <div class="col-md-10 col-lg-10">
+                <div>Description</div>
+                <hr>
+                <div id="linechartmain"></div>
+                <div id="slider">
+                    <div id="slider-div"></div>
+                    <div id="slider-probe">
+                        <p></p>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-
+<div class="col-md-4 col-lg-4">
+    <div class="panel panel-default ">
+        <div class="panel-body">
+            <div>
+                <div>Description</div>
+                <hr>
+                <div id="linechart"></div>
+            </div>
+        </div>
+    </div>
+</div>
 
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
