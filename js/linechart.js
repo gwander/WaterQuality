@@ -14,7 +14,7 @@ var yScale = d3.scale.linear().range([551, 0]);
 var yScale2 = d3.scale.linear().range([134, 132]);
 
 // 40 Custom DDV colors 
-var color = d3.scale.ordinal().range(["#48A36D", "#E37756", "#E2AA59"]);
+var color = d3.scale.ordinal().range(["#48A36D", "#E37756", "#E2AA59", "#33ccff"]);
 
 var xAxis = d3.svg.axis()
   .scale(xScale)
