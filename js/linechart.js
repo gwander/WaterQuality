@@ -11,7 +11,7 @@ var xScale2 = d3.time.scale()
 
 var yScale = d3.scale.linear().range([551, 0]);
 
-var yScale2 = d3.scale.linear().range([130, 124]);
+var yScale2 = d3.scale.linear().range([134, 132]);
 
 // 40 Custom DDV colors 
 var color = d3.scale.ordinal().range(["#48A36D", "#E37756", "#E2AA59"]);
