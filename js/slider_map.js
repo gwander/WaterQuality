@@ -8,7 +8,7 @@ function resetMap() {
 
 function initMap() {
     map = new google.maps.Map(d3.select("#map").node(), {
-        zoom: 13,
+        zoom: 12,
         center: { lat: 41.955, lng: -93.635 },
         mapTypeId: google.maps.MapTypeId.TERRAIN,
     });
@@ -69,9 +69,9 @@ d3.json("stations.json", function (error, data) {
 
             $(document).ready(function () {
                 $("#slider").slider({
-                    value: 1991,
-                    min: 1991,
-                    max: 2012,
+                    value: 200,
+                    min: 1,
+                    max: 300,
                     step: 1,
                     slide: function (event, ui) {
                         $("#year").val(ui.value);
@@ -82,10 +82,9 @@ d3.json("stations.json", function (error, data) {
                 var labels = marker.append("svg:g")
                     .attr("id", "labels");
                 var xy = d3.geo.equirectangular()
-                    .scale(850);
-                var scalefactor = 50. / 50.;// write a linear function 
+                    .scale(4000);
 
-                d3.csv("data.csv", function (csv) {
+                d3.csv("data1.csv", function (csv) {
 
                     marker
                         .append("text")
@@ -98,7 +97,7 @@ d3.json("stations.json", function (error, data) {
                     marker
                         .data(csv)
                         .append("circle")
-                        .attr("r", function (d) { return (+d["1990"]) * scalefactor; })
+                        .attr("r", function (d) { return (+d["200"])*3; })
                         .attr("cx", padding)
                         .attr("cy", padding)
                         .attr("fill", function (d) { return d["color"]; })
@@ -123,8 +122,8 @@ d3.json("stations.json", function (error, data) {
                 function redraw(year) {
                     marker.selectAll(".circle")
                         .transition()
-                        .duration(850).ease("linear")
-                        .attr("r", function (d) { return (+d[year]) * scalefactor; })
+                        .duration(4000).ease("linear")
+                        .attr("r", function (d) { return (+d[year]*3); })
                         .attr("title", function (d) { return d["country"] + ": " + Math.round(d[year]); });
 
                     labels.selectAll("text")
