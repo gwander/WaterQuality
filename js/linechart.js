@@ -49,6 +49,20 @@ var svg = d3.select("#linechart").append("svg")
   .append("g")
   .attr("class", "chart")
   .attr("transform", "translate(" + 20 + "," + -20 + ")")
+//barchart
+
+var svg4 = d3.select("#barchart").append("svg")
+  .attr("width", 390)
+  .attr("height", 501) //height + margin.top + margin.bottom
+  .append("g")
+  .attr("class", "chart")
+  .attr("transform", "translate(" + 20 + "," + -20 + ")")
+svg4.append("rect")
+  .attr("width", 390)
+  .attr("height", 501)
+  .attr("x", 0)
+  .attr("y", 0)
+  .style("fill", "white"); //大框
 
 // Create invisible rect for mouse tracking
 svg.append("rect")

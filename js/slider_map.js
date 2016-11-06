@@ -82,18 +82,10 @@ d3.json("stations.json", function (error, data) {
                 var labels = marker.append("svg:g")
                     .attr("id", "labels");
                 var xy = d3.geo.equirectangular()
-                    .scale(4000);
+                    .scale(985);
 
                 d3.csv("data1.csv", function (csv) {
 
-                    marker
-                        .append("text")
-                        .attr("x", padding + 10)
-                        .attr("y", padding)
-                        .attr("dy", ".31em")
-                        .attr("class","me")
-                        .text(function (d) { return d.key; });
-                        
                     marker
                         .data(csv)
                         .append("circle")
@@ -108,7 +100,8 @@ d3.json("stations.json", function (error, data) {
                         .attr("r", 1).attr("fill", "#FFF")
                         .attr("cx", padding)
                         .attr("cy", padding);
-
+                    
+                    d3.select("#month").text(1991+Math.floor(200/12)+"/"+200%12)
 
                     //   labels.selectAll("labels")
                     //       .data(csv)
@@ -117,12 +110,17 @@ d3.json("stations.json", function (error, data) {
                     //         .attr("y", function(d, i) { return xy([+d["longitude"],+d["latitude"]])[1]; })
                     //         .attr("dy", "0.3em")
                     //         .attr("text-anchor", "middle")
-                    //         .text(function(d) { return Math.round(d["1990"]); });
+                    //         .text(function(d) { return Math.round(d["200"]); });
                 });
                 function redraw(year) {
+                    var dateLabel;
+                    if(year%12==0) dateLabel = 1990+Math.floor(year/12)+"/12";
+                    else dateLabel = 1991+Math.floor(year/12)+"/"+year%12;
+                    d3.select("#month").text(dateLabel);
+
                     marker.selectAll(".circle")
                         .transition()
-                        .duration(4000).ease("linear")
+                        .duration(500).ease("linear")
                         .attr("r", function (d) { return (+d[year]*3); })
                         .attr("title", function (d) { return d["country"] + ": " + Math.round(d[year]); });
 
