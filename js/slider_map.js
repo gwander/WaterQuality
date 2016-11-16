@@ -116,12 +116,11 @@ function initMap() {
                         .attr("x", 0)
                         .attr("y", 0)
                         .style("fill", "white"); //大框
-                        
-                        svg4.append("text")
-                        .attr("x",50)
-                        .attr("y",50)
-                        .text("")
-                    
+
+                    svg4.append("text")
+                        .attr("x", 50)
+                        .attr("y", 50)
+
                     d3.csv("average.csv", function (csv) {
                         svg4
                             .data(csv)
@@ -137,9 +136,13 @@ function initMap() {
 
                     function redraw(year) {
                         var dateLabel;
-                        if (year % 12 == 0) dateLabel = 1990 + Math.floor(year / 12) + "/12";
-                        else dateLabel = 1991 + Math.floor(year / 12) + "/" + year % 12;
-                        d3.select("#month").text(dateLabel);
+                        function labelDate(year) {
+                            if (year % 12 == 0) dateLabel = 1990 + Math.floor(year / 12) + "/12";
+                            else dateLabel = 1991 + Math.floor(year / 12) + "/" + year % 12;
+                            return dateLabel;
+                        }
+
+                        d3.select("#month").text(labelDate(year));
 
                         marker.selectAll(".circle")
                             .transition()
@@ -152,14 +155,17 @@ function initMap() {
 
                         var year1 = year - 6;
                         var year2 = year - (-6);
+
                         svg4.select("#svg4")
                             .attr("height", function (d) { return (+d[year2] - d[year1]); })
                             .attr("y", function (d) { return 501 - (+d[year2] - d[year1]); })
-                        
+
                         svg4.select("text")
-                        .attr("x",50)
-                        .attr("y",60)
-                        .text(function (d) { return "Average:"+ (+d[year2] - d[year1])/12; })
+                            .attr("x", 50)
+                            .attr("y", 60)
+                            .text(function (d) {
+                                return "Average Nitrate Level:" + ((+d[year2] - d[year1]) / 12).toFixed(2)+" mg/L"+  ' ' + labelDate(year1+1) + " - " + labelDate(year2);
+                            })
                     }
                 });
 
