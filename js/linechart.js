@@ -20,7 +20,7 @@ var xAxis = d3.svg.axis()
 
 var xAxis2 = d3.svg.axis()
   .scale(xScale2)
-  .orient("bottom");
+  .orient("bottom");ß
 
 var yAxis = d3.svg.axis()
   .scale(yScale)

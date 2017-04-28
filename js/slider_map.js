@@ -42,9 +42,9 @@ function initMap() {
         map.data.revertStyle();
     });
 
-    //end of google-map
+    //end of google-
+    
     //add a site layer to google-map
-
     d3.json("stations.json", function (error, data) {
         if (error) throw error;
         var overlay = new google.maps.OverlayView();
