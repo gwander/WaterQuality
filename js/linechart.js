@@ -20,7 +20,7 @@ var xAxis = d3.svg.axis()
 
 var xAxis2 = d3.svg.axis()
   .scale(xScale2)
-  .orient("bottom");ß
+  .orient("bottom");
 
 var yAxis = d3.svg.axis()
   .scale(yScale)
@@ -35,7 +35,7 @@ var line = d3.svg.line()
   .x(function (d) { return xScale(d.date); })
   .y(function (d) { return yScale(d.rating); })
   .defined(function (d) { return d.rating; });
-  
+
 var line2 = d3.svg.line()
   .interpolate("basis")
   .x(function (d) { return xScale2(d.date); })
@@ -213,7 +213,7 @@ d3.csv("data4.csv", function (error, data) {
 
   //legends
   var legendSpace = 100 / categories.length;
-      
+
   issue.append("rect")
     .attr("width", 16)
     .attr("height", 16)
@@ -328,18 +328,18 @@ d3.csv("data4.csv", function (error, data) {
 
     xScale.domain(brush.empty() ? xScale_copy.domain() : brush.extent()); // If brush is empty then reset the Xscale domain to default, if not then make it the brush extent 
 
-    svg.select(".x.axis") 
+    svg.select(".x.axis")
       .transition()
       .call(xAxis);
 
-    maxY = findMaxY(categories); 
-    yScale.domain([0, maxY]); 
+    maxY = findMaxY(categories);
+    yScale.domain([0, maxY]);
 
-    svg.select(".y.axis") 
+    svg.select(".y.axis")
       .transition()
       .call(yAxis);
 
-    chart.select("path") 
+    chart.select("path")
       .transition()
       .attr("d", function (d) {
         return d.visible ? line(d.values) : null;
