@@ -84,7 +84,7 @@ function initMap() {
                     var xy = d3.geo.equirectangular()
                         .scale(985);
 
-                    d3.csv("data1.csv", function (csv) {
+                    d3.csv("data_bubble.csv", function (csv) {
                         marker
                             .data(csv)
                             .append("circle")

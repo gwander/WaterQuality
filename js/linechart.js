@@ -76,7 +76,7 @@ svg2.append("defs")
   .attr("width", 660)
   .attr("height", 120); //控制不样line出格
 
-d3.csv("data4.csv", function (error, data) {
+d3.csv("data_line.csv", function (error, data) {
   color.domain(d3.keys(data[0]).filter(function (key) {
     return key !== "date";
   }));
